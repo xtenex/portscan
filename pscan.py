@@ -21,11 +21,14 @@ def main():
     if len(os.sys.argv) != 2:
         print("usage: {0} [IP]".format(os.sys.argv[0]))
     else:
-        threads = []
+        threads = [] # esta lista va a servir para "encolar" los hilos generados
         print("starting threads")
-        for i in range(2):
+        for i in range(2): #el rango es el numero de hilos que deseamos crear, en este caso 2
             t = threading.Thread(target=scan, args=(os.sys.argv[1],i,))
-            threads.append(t)
+            # creaos un objeto "t" que va a servir para inicializar los hilos
+            # target debe ser la funcion que creamos
+            # los argumentos son enviados a la funcion como lo es la IP y el numero del hilo
+            threads.append(t) # generamos la cola de hilos creados
             t.start()
 
 
